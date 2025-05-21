@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="bg-primary text-primary-foreground">
+    <footer className="bg-blue-800 text-primary-foreground">
       <div className="max-w-7xl mx-auto px-4 py-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Info */}
@@ -69,7 +69,7 @@ export default function Footer() {
         </div>
         
         <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-sm text-center text-primary-foreground/60">
-          <p>&copy; {new Date().getFullYear()} NextShop. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} American.</p>
         </div>
       </div>
     </footer>

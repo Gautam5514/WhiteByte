@@ -86,7 +86,7 @@ export default function ProductCard({ product }: { product: Product }) {
             
             <Button 
               onClick={handleAddToCart} 
-              className="w-full"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white"
               size="sm"
             >
               <ShoppingCart className="h-4 w-4 mr-2" />

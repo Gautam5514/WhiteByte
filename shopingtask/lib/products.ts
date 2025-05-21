@@ -142,27 +142,7 @@ const products: Product[] = [
     rating: 4.5,
     reviewCount: 321
   },
-  {
-    id: '10',
-    name: 'Smartphone Gimbal Stabilizer',
-    price: 119.99,
-    originalPrice: 149.99,
-    description: 'Capture smooth, professional-looking video with this 3-axis smartphone gimbal stabilizer.',
-    image: 'https://images.pexels.com/photos/3154320/pexels-photo-3154320.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    category: 'electronics',
-    rating: 4.7,
-    reviewCount: 78
-  },
-  {
-    id: '11',
-    name: 'Smart Home Security Camera',
-    price: 89.99,
-    description: 'Keep an eye on your home with this 1080p smart security camera featuring night vision and two-way audio.',
-    image: 'https://images.pexels.com/photos/3044123/pexels-photo-3044123.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    category: 'electronics',
-    rating: 4.3,
-    reviewCount: 156
-  },
+  
   {
     id: '12',
     name: 'Vintage Leather Wallet',

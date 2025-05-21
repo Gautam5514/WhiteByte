@@ -78,85 +78,89 @@ export default function Sidebar() {
   return (
     <div className="bg-card rounded-lg p-4 shadow-sm">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold">Filters</h2>
-        {filtersApplied && (
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            onClick={resetFilters}
-            className="text-xs"
-          >
-            <FilterX className="h-4 w-4 mr-1" />
-            Reset
-          </Button>
-        )}
+      <h2 className="text-lg font-semibold text-blue-600">Filters</h2>
+      {filtersApplied && (
+        <Button 
+        variant="ghost" 
+        size="sm" 
+        onClick={resetFilters}
+        className="text-xs text-blue-600"
+        >
+        <FilterX className="h-4 w-4 mr-1 text-blue-600" />
+        Reset
+        </Button>
+      )}
       </div>
       
       <Accordion type="multiple" defaultValue={['category', 'price']} className="space-y-4">
-        <AccordionItem value="category" className="border-b-0">
-          <AccordionTrigger className="py-2 text-sm font-medium">Category</AccordionTrigger>
-          <AccordionContent>
-            <div className="space-y-2 pt-1">
-              <div className="flex items-center space-x-2">
-                <Checkbox 
-                  id="category-all" 
-                  checked={category === ''}
-                  onCheckedChange={() => setCategory('')}
-                />
-                <Label 
-                  htmlFor="category-all" 
-                  className="text-sm cursor-pointer"
-                >
-                  All
-                </Label>
-              </div>
-              
-              {CATEGORIES.map((cat) => (
-                <div key={cat} className="flex items-center space-x-2">
-                  <Checkbox 
-                    id={`category-${cat}`}
-                    checked={category === cat}
-                    onCheckedChange={() => setCategory(cat)}
-                  />
-                  <Label 
-                    htmlFor={`category-${cat}`} 
-                    className="text-sm capitalize cursor-pointer"
-                  >
-                    {cat}
-                  </Label>
-                </div>
-              ))}
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-        
-        <AccordionItem value="price" className="border-b-0">
-          <AccordionTrigger className="py-2 text-sm font-medium">Price Range</AccordionTrigger>
-          <AccordionContent>
-            <div className="pt-4 px-2">
-              <Slider
-                defaultValue={[0, 5000]}
-                value={priceRange}
-                min={0}
-                max={5000}
-                step={50}
-                onValueChange={(value) => setPriceRange(value as [number, number])}
-                className="mb-6"
-              />
-              <div className="flex items-center justify-between text-sm">
-                <span>${priceRange[0]}</span>
-                <span>${priceRange[1]}</span>
-              </div>
-            </div>
-          </AccordionContent>
-        </AccordionItem>
+      <AccordionItem value="category" className="border-b-0">
+        <AccordionTrigger className="py-2 text-sm font-medium text-blue-600">Category</AccordionTrigger>
+        <AccordionContent>
+        <div className="space-y-2 pt-1">
+          <div className="flex items-center space-x-2">
+          <Checkbox 
+            id="category-all" 
+            checked={category === ''}
+            onCheckedChange={() => setCategory('')}
+            className="text-blue-600"
+          />
+          <Label 
+            htmlFor="category-all" 
+            className="text-sm cursor-pointer text-blue-600"
+          >
+            All
+          </Label>
+          </div>
+          
+          {CATEGORIES.map((cat) => (
+          <div key={cat} className="flex items-center space-x-2">
+            <Checkbox 
+            id={`category-${cat}`}
+            checked={category === cat}
+            onCheckedChange={() => setCategory(cat)}
+            className="text-blue-600"
+            />
+            <Label 
+            htmlFor={`category-${cat}`} 
+            className="text-sm capitalize cursor-pointer text-blue-600"
+            >
+            {cat}
+            </Label>
+          </div>
+          ))}
+        </div>
+        </AccordionContent>
+      </AccordionItem>
+      
+      <AccordionItem value="price" className="border-b-0">
+        <AccordionTrigger className="py-2 text-sm font-medium text-blue-600">Price Range</AccordionTrigger>
+        <AccordionContent>
+        <div className="pt-4 px-2">
+          <Slider
+          defaultValue={[0, 5000]}
+          value={priceRange}
+          min={0}
+          max={5000}
+          step={50}
+          onValueChange={(value) => setPriceRange(value as [number, number])}
+          className="mb-6 text-blue-600"
+          thumbClassName="bg-blue-600"
+          trackClassName="bg-blue-200"
+          />
+          <div className="flex items-center justify-between text-sm text-blue-600">
+          <span>${priceRange[0]}</span>
+          <span>${priceRange[1]}</span>
+          </div>
+        </div>
+        </AccordionContent>
+      </AccordionItem>
       </Accordion>
       
       <Button 
-        onClick={applyFilters} 
-        className="w-full mt-4"
+      onClick={applyFilters} 
+      className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white"
       >
-        Apply Filters
+      Apply Filters
       </Button>
     </div>
   );

@@ -57,8 +57,8 @@ export default function Header() {
     <header className={cn(
       "sticky top-0 z-50 w-full transition-colors duration-300",
       isScrolled 
-        ? "bg-primary text-primary-foreground shadow-md" 
-        : "bg-primary text-primary-foreground"
+        ? "bg-blue-700 text-primary-foreground shadow-md" 
+        : "bg-blue-900 text-primary-foreground"
     )}>
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
@@ -67,20 +67,20 @@ export default function Header() {
             href="/" 
             className="text-2xl font-bold flex items-center transition-transform hover:scale-105"
           >
-            NextShop
+            LoGo
           </Link>
           
           {/* Search Bar */}
-          <form 
+            <form 
             onSubmit={handleSearch}
             className="hidden md:flex items-center relative flex-1 max-w-md mx-6"
-          >
+            >
             <input
               type="text"
               placeholder="Search for products..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full py-2 px-4 pr-10 rounded-md bg-primary-foreground text-primary-foreground/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary/80 placeholder-primary/50"
+              className="w-full py-2 px-4 pr-10 rounded-md bg-primary-foreground text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary/80 placeholder-primary/50"
             />
             <button 
               type="submit" 
@@ -89,35 +89,27 @@ export default function Header() {
             >
               <Search className="h-5 w-5" />
             </button>
-          </form>
+            </form>
           
           {/* Right Side - Cart & User */}
-          <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-4">
             <Link href="/cart">
               <div className="relative flex items-center">
-                <Button 
-                  variant="ghost" 
-                  size="icon"
-                  className="relative text-primary-foreground hover:text-primary-foreground/80"
-                >
-                  <ShoppingCart className="h-6 w-6" />
-                  {totalItems > 0 && (
-                    <span className="absolute -top-2 -right-2 bg-destructive text-destructive-foreground text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
-                      {totalItems}
-                    </span>
-                  )}
-                </Button>
+              <Button 
+                variant="ghost" 
+                size="icon"
+                className="relative text-primary-foreground hover:text-primary-foreground/80"
+              >
+                <ShoppingCart className="h-6 w-6" />
+                {totalItems > 0 && (
+                <span className="absolute -top-2 -right-2 bg-destructive text-destructive-foreground text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                  {totalItems}
+                </span>
+                )}
+              </Button>
               </div>
             </Link>
-            
-            <Button 
-              variant="ghost" 
-              size="icon"
-              className="text-primary-foreground hover:text-primary-foreground/80"
-            >
-              <User className="h-6 w-6" />
-            </Button>
-          </div>
+            </div>
         </div>
         
         {/* Mobile Search Bar */}

@@ -5,12 +5,12 @@ import { Product } from '@/types';
 import { useCart } from '@/context/CartContext';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { 
-  ShoppingCart, 
-  Star, 
-  Minus, 
-  Plus, 
-  ArrowLeft, 
+import {
+  ShoppingCart,
+  Star,
+  Minus,
+  Plus,
+  ArrowLeft,
   Check,
   TagIcon
 } from 'lucide-react';
@@ -25,34 +25,35 @@ export default function ProductDetail({ product }: { product: Product }) {
   const [quantity, setQuantity] = useState(1);
   const [activeImage, setActiveImage] = useState(0);
   const [added, setAdded] = useState(false);
-  
+
   const handleAddToCart = () => {
     addToCart(product, quantity);
-    
+
     setAdded(true);
     setTimeout(() => setAdded(false), 1500);
-    
+
     toast({
       title: "Added to cart",
       description: `${quantity} ${quantity > 1 ? 'items' : 'item'} added to your cart.`,
       duration: 2000,
     });
   };
-  
-  const images = product.gallery?.length > 0 
-    ? product.gallery 
-    : [product.image];
-  
+
+  const images: string[] = (product.gallery && product.gallery.length > 0)
+  ? product.gallery
+  : [product.image];
+
+
   const decrementQuantity = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
     }
   };
-  
+
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
   };
-  
+
   return (
     <div className="max-w-7xl mx-auto p-4 md:p-6">
       <div className="mb-6">
@@ -61,11 +62,11 @@ export default function ProductDetail({ product }: { product: Product }) {
           Back to products
         </Link>
       </div>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Product Images */}
         <div className="space-y-4">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="relative aspect-square rounded-lg overflow-hidden bg-muted/30 border"
@@ -79,11 +80,11 @@ export default function ProductDetail({ product }: { product: Product }) {
               priority
             />
           </motion.div>
-          
+
           {images.length > 1 && (
             <div className="grid grid-cols-4 gap-2">
               {images.map((img, idx) => (
-                <div 
+                <div
                   key={idx}
                   className={cn(
                     "relative aspect-square rounded border cursor-pointer overflow-hidden transition-all duration-200",
@@ -103,22 +104,22 @@ export default function ProductDetail({ product }: { product: Product }) {
             </div>
           )}
         </div>
-        
+
         {/* Product Info */}
         <div className="space-y-6">
           {/* Title and Rating */}
           <div>
             <h1 className="text-2xl md:text-3xl font-bold">{product.name}</h1>
-            
+
             {product.rating && (
               <div className="flex items-center mt-2">
                 {[...Array(5)].map((_, i) => (
                   <Star
                     key={i}
                     className={cn(
-                      "h-4 w-4", 
-                      i < product.rating 
-                        ? "text-yellow-500 fill-yellow-500" 
+                      "h-4 w-4",
+                      i < (product.rating ?? 0)
+                        ? "text-yellow-500 fill-yellow-500"
                         : "text-muted-foreground"
                     )}
                   />
@@ -129,7 +130,7 @@ export default function ProductDetail({ product }: { product: Product }) {
               </div>
             )}
           </div>
-          
+
           {/* Price */}
           <div>
             <div className="flex items-baseline space-x-3">
@@ -142,7 +143,7 @@ export default function ProductDetail({ product }: { product: Product }) {
                 </span>
               )}
             </div>
-            
+
             {product.originalPrice && (
               <div className="mt-1">
                 <span className="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">
@@ -151,7 +152,7 @@ export default function ProductDetail({ product }: { product: Product }) {
               </div>
             )}
           </div>
-          
+
           {/* Description */}
           <div>
             <h2 className="text-lg font-medium mb-2">Description</h2>
@@ -159,7 +160,7 @@ export default function ProductDetail({ product }: { product: Product }) {
               {product.description || "No description available for this product."}
             </p>
           </div>
-          
+
           {/* Category */}
           {product.category && (
             <div className="flex items-center">
@@ -169,7 +170,7 @@ export default function ProductDetail({ product }: { product: Product }) {
               </span>
             </div>
           )}
-          
+
           {/* Quantity */}
           <div>
             <h2 className="text-lg font-medium mb-3">Quantity</h2>
@@ -196,10 +197,10 @@ export default function ProductDetail({ product }: { product: Product }) {
               </Button>
             </div>
           </div>
-          
+
           {/* Add to Cart */}
           <div className="pt-4">
-            <Button 
+            <Button
               onClick={handleAddToCart}
               disabled={added}
               className="w-full h-12 text-base"
@@ -232,7 +233,7 @@ export default function ProductDetail({ product }: { product: Product }) {
               </AnimatePresence>
             </Button>
           </div>
-          
+
           {/* Additional details */}
           <div className="border-t pt-6 mt-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -246,7 +247,7 @@ export default function ProductDetail({ product }: { product: Product }) {
                   </ul>
                 </div>
               )}
-              
+
               {product.specifications && (
                 <div>
                   <h3 className="text-sm font-medium mb-2">Specifications</h3>
@@ -264,7 +265,7 @@ export default function ProductDetail({ product }: { product: Product }) {
           </div>
         </div>
       </div>
-      
+
       {/* Product recommendations section */}
       {product.relatedProducts && product.relatedProducts.length > 0 && (
         <div className="mt-16">

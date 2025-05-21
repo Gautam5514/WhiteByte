@@ -62,7 +62,7 @@ export default function ProductCard({ product }: { product: Product }) {
                       key={i}
                       className={cn(
                         "h-3.5 w-3.5", 
-                        i < product.rating 
+                        i < (product.rating ?? 0)
                           ? "text-yellow-500 fill-yellow-500" 
                           : "text-muted-foreground"
                       )}

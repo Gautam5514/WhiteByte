@@ -156,7 +156,7 @@ const products: Product[] = [
 ];
 
 // List of product categories
-export const CATEGORIES = [...new Set(products.map(product => product.category as string))];
+export const CATEGORIES = Array.from(new Set(products.map(product => product.category as string)));
 
 // Get all products (with optional filtering)
 export function getProducts({

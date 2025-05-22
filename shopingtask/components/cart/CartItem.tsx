@@ -44,7 +44,7 @@ export default function CartItem({
         
         <div className="mt-1 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
           <div className="text-sm text-muted-foreground">
-            Unit Price: <span className="font-medium text-foreground">${item.price.toFixed(2)}</span>
+            Unit Price: <span className="font-medium text-foreground">${item.price.toFixed(0)}</span>
           </div>
           
           {/* Quantity Controls */}
@@ -78,7 +78,7 @@ export default function CartItem({
       {/* Price and Remove */}
       <div className="flex flex-col items-end gap-2 mt-2 sm:mt-0 w-full sm:w-auto">
         <div className="font-semibold">
-          ${(item.price * item.quantity).toFixed(2)}
+          ${(item.price * item.quantity).toFixed(0)}
         </div>
         
         <Button 

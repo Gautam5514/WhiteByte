@@ -3,7 +3,7 @@ import ProductDetail from '@/components/product/ProductDetail';
 import { getProductById } from '@/lib/products';
 
 export async function generateStaticParams() {
-  const products = await fetch('https://your-api-endpoint/products')
+  const products = await fetch('https:///products')
     .then(res => res.json())
     .catch(() => []);
 

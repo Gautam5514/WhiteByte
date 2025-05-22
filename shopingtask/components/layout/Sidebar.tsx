@@ -42,6 +42,11 @@ export default function Sidebar() {
     ]);
   }, [searchParams, currentCategory, currentMinPrice, currentMaxPrice]);
 
+
+
+
+
+
   // Apply filters
   const applyFilters = () => {
     const params = new URLSearchParams(searchParams.toString());
@@ -143,7 +148,31 @@ export default function Sidebar() {
                 min={0}
                 max={5000}
                 step={50}
-                onValueChange={(value) => setPriceRange(value as [number, number])}
+                onValueChange={(value) => {
+                  const newRange = value as [number, number]
+                  setPriceRange(newRange);
+
+                  const params = new URLSearchParams(searchParams.toString());
+
+                  // Update category filter
+                  if (category) {
+                    params.set('category', category);
+                  } else {
+                    params.delete('category');
+                  }
+
+                  // Update price range
+                  params.set('minPrice', priceRange[0].toString());
+                  params.set('maxPrice', priceRange[1].toString());
+
+                  // Keep search query if exists
+                  const query = searchParams.get('query');
+                  if (query) {
+                    params.set('query', query);
+                  }
+
+                  router.push(`${pathname}?${params.toString()}`);
+                }}
                 className="mb-6 text-blue-600"
               />
 
